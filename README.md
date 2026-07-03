@@ -7,10 +7,10 @@ ATSLens is a simple web app that compares a resume against a job description, fi
 ## Screenshots
 
 **Home Page**
-![Home Page](screenshots/home.png)
+![Home Page](screenshots/home.jpeg)
 
 **ATS Analysis Report**
-![ATS Analysis Report](screenshots/analysis.png)
+![ATS Analysis Report](screenshots/analysis.jpeg)
 
 ## Features
 
