@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATS Resume Checker</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<script src="particles.js" defer></script>
+
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+
+    <div class="brand-block">
+      <div class="brand">
+        <span class="brand-mark">AI</span>
+        <span class="brand-text">ATSLens</span>
+      </div>
+
+      <div class="brand-sub">
+        Analyze Your Resume Through the ATS Lens
+      </div>
+    </div>
+
+    <span class="status-pill">
+      <span class="dot"></span>
+      Local Analysis • No Data Uploaded
+    </span>
+
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="intro">
+
+    <p class="eyebrow">ATS RESUME ANALYSIS</p>
+
+    <h1>
+      Optimize Your Resume for
+      <span class="highlight">ATS Success</span>
+    </h1>
+
+    <p class="intro-copy">
+      Compare your resume against any job description, identify missing skills,
+      and improve your chances of passing Applicant Tracking Systems used by recruiters.
+    </p>
+
+  </section>
+
+  <section class="panes">
+
+    <div class="pane" data-pane="resume">
+
+      <div class="pane-head">
+        <span class="pane-tag">RESUME</span>
+        <span class="pane-count" id="resumeCount">0 words</span>
+      </div>
+
+      <textarea
+        id="resumeInput"
+        placeholder="Paste your resume here..."
+        spellcheck="false"></textarea>
+
+    </div>
+
+    <div class="pane" data-pane="jd">
+
+      <div class="pane-head">
+        <span class="pane-tag">JOB DESCRIPTION</span>
+        <span class="pane-count" id="jdCount">0 words</span>
+      </div>
+
+      <textarea
+        id="jdInput"
+        placeholder="Paste the job description here..."
+        spellcheck="false"></textarea>
+
+    </div>
+
+  </section>
+
+  <section class="run-row">
+
+    <button id="scanBtn" class="scan-btn">
+      <span class="scan-btn-label">RUN ATS ANALYSIS</span>
+      <span class="scan-btn-glyph">&#9654;</span>
+    </button>
+
+    <p class="run-hint" id="runHint">
+      Paste both documents to begin analysis.
+    </p>
+
+  </section>
+
+  <section class="results" id="results" hidden>
+
+    <div class="results-top">
+
+      <p class="eyebrow">ANALYSIS RESULTS</p>
+
+      <h2>ATS Match Analysis</h2>
+
+    </div>
+
+    <div class="results-grid">
+
+      <div class="gauge-card">
+
+        <div class="gauge-wrap">
+
+          <svg id="gaugeSvg" viewBox="0 0 200 200" class="gauge">
+            <circle class="gauge-track" cx="100" cy="100" r="88"></circle>
+            <circle class="gauge-fill" id="gaugeFill" cx="100" cy="100" r="88"></circle>
+          </svg>
+
+          <div class="gauge-center">
+            <span class="gauge-score" id="gaugeScore">0%</span>
+            <span class="gauge-label" id="gaugeLabel">MATCH SCORE</span>
+          </div>
+
+        </div>
+
+        <div class="gauge-stats">
+
+          <div class="stat">
+            <span class="stat-num" id="statMatched">0</span>
+            <span class="stat-label">Matched Skills</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-num" id="statMissing">0</span>
+            <span class="stat-label">Missing Skills</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-num" id="statTotal">0</span>
+            <span class="stat-label">Keywords Tracked</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="keywords-card">
+
+        <div class="kw-block">
+
+          <div class="kw-head">
+            <span class="kw-dot kw-dot--match"></span>
+            <span class="kw-title">Core Skills Matched</span>
+            <span class="kw-total" id="matchedTotal">0</span>
+          </div>
+
+          <div class="kw-chips" id="matchedChips"></div>
+
+        </div>
+
+        <div class="kw-block">
+
+          <div class="kw-head">
+            <span class="kw-dot kw-dot--miss"></span>
+            <span class="kw-title">Top Missing Skills</span>
+            <span class="kw-total" id="missingTotal">0</span>
+          </div>
+
+          <div class="kw-chips" id="missingChips"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="suggestions-card">
+
+      <p class="eyebrow">OPTIMIZATION RECOMMENDATIONS</p>
+
+      <ul class="suggestions-list" id="suggestionsList"></ul>
+
+    </div>
+
+    <div class="copy-row">
+
+      <button id="copyBtn" class="copy-btn">
+        COPY REPORT
+      </button>
+
+      <span class="copy-toast" id="copyToast">
+        Report copied successfully
+      </span>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+
+  <p>
+    Built with HTML, CSS, and JavaScript • All analysis runs locally in your browser.
+  </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
